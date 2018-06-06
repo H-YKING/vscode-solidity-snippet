@@ -1,112 +1,166 @@
-" Netrw Directory Listing                                        (netrw v153)
-"   /Users/stylehuan/Documents/HY/github/solidity.json
-"   Sorted by      name
-"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\
-"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:special
-" ==============================================================================
-../                                            0 三  6/ 6 16:19:14 2018
-./                                             0 三  6/ 6 16:19:14 2018
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-solidity.json [RO]
-**warning** (netrw) your hiding list is empty!
-NetrwMessage [RO]
-"NetrwMessage"  --No lines in buffer--
-" Netrw Directory Listing                                        (netrw v153)
-"   /Users/stylehuan/Documents/HY/github/solidity.json
-"   Sorted by      name
-"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\
-"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:special
-" ==============================================================================
-../                                            0 三  6/ 6 16:19:14 2018
-./                                             0 三  6/ 6 16:19:14 2018
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-solidity.json [RO]
-**warning** (netrw) your hiding list is empty!
-~
-NetrwMessage [RO]
-      "        return hash;",
-刘 洋, [2018年6月6日 下午4:14:40]:{
-  // Place your snippets for solidity here. Each snippet is defined under a snippet name and has a prefix, body and
-  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
-  // same ids are connected.
-  // Example:
-  "Print to console": {
-    "prefix": "log",
-    "body": [
-      "console.log('$1');",
-      "$2"
-    ],
-    "description": "Log output to console"
-  },
+{
+    "Print to console": {
+        "prefix": "log",
+        "body": [
+            "console.log('$1');",
+            "$2"
+        ],
+        "description": "Log output to console"
+    },
 
-  "AdvanceToken": {
-    "prefix": "AdvanceToken",
-    "body": [
-      "pragma solidity ^0.4.18;",
-      "",
-      "import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';\nimport 'zeppelin-solidity/contracts/token/ERC20/DetailedERC20.sol';\nimport 'zeppelin-solidity/contracts/ownership/Ownable.sol';",
-      "",
-      "contract ${TM_FILENAME_BASE} is Ownable, DetailedERC20, StandardToken {",
-      "",
-      "    address public owner;",
-      "    // 文字翻译\n    mapping(bytes32 => string) public translate;",
-      "",
-      "    //权限控制",
-      "    modifier onlyOwner() {",
-      "        require(",
-      "            msg.sender == owner",
-      "        );",
-      "        _;",
-      "    }",
-      "",
-      "    constructor (",
-      "        uint256 initialSupply,",
-      "        string  tokenName,",
-      "        string  tokenSymbol,",
-      "        uint8   decimals",
-      "    ) DetailedERC20(tokenName, tokenSymbol, decimals) {",
-        "        // 创建者获得所有代币\n        balances[msg.sender] = initialSupply;",
-        "        //设置合约所有者\n        owner = msg.sender;",
-      "    }",
-      "",
-      "    $1",
-      "",
-      "    // 设置翻译",
-      "    function translateSet(string text) public returns (bytes32) {",
-      "        var textBytes = bytes(text);",
-      "        if (textBytes.length == 0) {",
-      "            // 空",
-      "            return 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;",
-      "        }",
-      "            // 限制最大文本",
-      "        assert(textBytes.length < 1024);",
+    "AdvanceToken": {
+        "prefix": "AdvanceToken",
+        "body": [
+            "pragma solidity ^0.4.22;",
+            "",
+            "import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';\nimport 'zeppelin-solidity/contracts/token/ERC20/DetailedERC20.sol';\nimport 'zeppelin-solidity/contracts/ownership/Ownable.sol';",
+            "",
+            "contract ${TM_FILENAME_BASE} is Ownable, DetailedERC20, StandardToken {",
+            "",
+            "    address public owner;",
+            "    // 文字翻译\n    mapping(bytes32 => string) public translate;",
+            "",
+            "    //权限控制",
+            "    modifier onlyOwner() {",
+            "        require(",
+            "            msg.sender == owner",
+            "        );",
+            "        _;",
+            "    }",
+            "",
+            "    constructor (",
+            "        uint256 initialSupply,",
+            "        string  tokenName,",
+            "        string  tokenSymbol,",
+            "        uint8   decimals",
+            "    ) DetailedERC20(tokenName, tokenSymbol, decimals) {",
+            "        // 创建者获得所有代币\n        balances[msg.sender] = initialSupply;",
+            "        //设置合约所有者\n        owner = msg.sender;",
+            "    }",
+            "",
+            "    $1",
+            "",
+            "    // 设置翻译",
+            "    function translateSet(string text) public returns (bytes32) {",
+            "        var textBytes = bytes(text);",
+            "        if (textBytes.length == 0) {",
+            "            // 空",
+            "            return 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;",
+            "        }",
+            "            // 限制最大文本",
+            "        assert(textBytes.length < 1024);",
 
-      "        bytes32 hash = keccak256(text);",
-      "        if (bytes(translate[hash]).length == 0) {",
-      "            translate[hash] = text;",
--- INSERT --
+            "        bytes32 hash = keccak256(text);",
+            "        if (bytes(translate[hash]).length == 0) {",
+            "            translate[hash] = text;",
+            "        }",
+            "        return hash;",
+            "    }",
+            "}",
+
+
+        ],
+        "description": "AdvanceToken"
+    },
+
+    "solidity": {
+        "prefix": "solidity",
+        "body": [
+            "pragma solidity ^0.4.22;",
+            "",
+            "import 'zeppelin-solidity/contracts/token/ERC20/StandardToken.sol';\nimport 'zeppelin-solidity/contracts/token/ERC20/DetailedERC20.sol';\nimport 'zeppelin-solidity/contracts/ownership/Ownable.sol';",
+            "",
+            "contract ${TM_FILENAME_BASE} {",
+            "",
+            "    address public owner;",
+            "    // 文字翻译\n    mapping(bytes32 => string) public translate;",
+            "",
+            "    //权限控制",
+            "    modifier onlyOwner() {",
+            "        require(",
+            "            msg.sender == owner",
+            "        );",
+            "        _;",
+            "    }",
+            "",
+            "    constructor (",
+            "        string  ${1:initialSupply},",
+            "        string  ${2:tokenName},",
+            "        uint    ${3:tokenSymbol},",
+            "        uint    ${4:decimals}",
+            "    ) {",
+            "        //设置合约所有者\n        owner = msg.sender;",
+            "    }",
+            "",
+            "    $5",
+            "",
+            "    // 设置翻译",
+            "    function translateSet(string text) public returns (bytes32) {",
+            "        var textBytes = bytes(text);",
+            "        if (textBytes.length == 0) {",
+            "            // 空",
+            "            return 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;",
+            "        }",
+            "            // 限制最大文本",
+            "        assert(textBytes.length < 1024);",
+
+            "        bytes32 hash = keccak256(text);",
+            "        if (bytes(translate[hash]).length == 0) {",
+            "            translate[hash] = text;",
+            "        }",
+            "        return hash;",
+            "    }",
+            "}",
+
+        ],
+        "description": "solidity"
+    },
+
+    "function": {
+        "prefix": "function",
+        "body": [
+            "function ${1:fun} ( ",
+            "    ${2:|bool,string,uint,bytes32|} ${3:data},",
+            "    ${4:|bool,string,uint,bytes32|} ${5:data}",
+            ") public returns ${6:view} (${7|bool,string,uint,bytes32|}) {",
+            "    $100",
+            "}",
+            "$101"
+        ],
+        "description": "function"
+    },
+
+    "balances": {
+        "prefix": "balances",
+        "body": [
+            "function transferAccounts ( ",
+            "    address _from,",
+            "    address _to,",
+            "    uint256 _value,",
+            "    uint32  _fee",
+            ") public returns (bool) {",
+            "    require(_value > 0);",
+            "    if(_fee > 0){",
+            "        balances[_from] = balances[_from].sub(_value).sub(_fee);",
+            "        balances[msg.sender] = balances[msg.sender].add[_fee]",
+            "    } else {",
+            "        balances[_from] = balances[_from].sub(_value);",
+            "    }",
+            "    balances[_to] = balances[_to].add(_value);",
+            "    return true;",
+            "}",
+            "",
+            "$101"
+        ],
+        "description": "balances"
+    },
+
+    "mapping": {
+        "prefix": "mapping",
+        "body": [
+            "mapping (${1|string,bytes32,address,uint|} => ${2|string,bytes32,address,uint|}) public ${3:data};",
+            "$4"
+        ],
+        "description": "mapping"
+    }
+}
